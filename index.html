@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Greensock</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="box"></div>
+
+<!--<div class="button" id="start">Start</div>-->
+<!--<div class="button" id="stop">Stop</div>-->
+<!--<div class="button" id="pause">Pause</div>-->
+<!--<div class="button" id="reverse">Reverse</div>-->
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
+<!--<script src="bower_components/gsap/src/uncompressed/TweenLite.js"></script>-->
+<!--<script src="bower_components/gsap/src/uncompressed/TimelineLite.js"></script>-->
+<!--<script src="bower_components/gsap/src/uncompressed/easing/EasePack.js"></script>-->
+<!--<script src="bower_components/gsap/src/uncompressed/plugins/CSSPlugin.js"></script>-->
+<script>
+    $('document').ready(function() {
+
+        init();
+
+    });
+
+    function init() {
+
+        // TweenMax.set('.box', {x:"0", y:"0"});
+        //
+        // TweenMax.to('.box', 5, {
+        //     x: 200,
+        //     y: 400,
+        //     backgroundColor: 'green'
+        // });
+
+        TweenMax.to('.box', 1, {
+            top: '50vh',
+            left: '50vw',
+            //rotationX: 180,
+            //onComplete: setBackToOriginal,
+            //onCompleteParams: [$('.box')],
+            rotation: 30,
+            // yoyo: true,
+            // repeat: 2,
+            alpha: .5,
+            scale: 2,
+            //transformOrigin:"center center"
+            ease: Power4.easeIn
+        });
+
+        // var toolTimeline = new TimelineLite();
+        // var toolTimeline = new TimelineLite({paused: true});
+        //
+        // toolTimeline.add(TweenMax.to('.box', 1, {
+        //     x: 50,
+        //     ease: Power2.easOut
+        // }));
+        // toolTimeline.add(TweenMax.to('.box', 1, {
+        //     x: 200
+        // }));
+
+        // toolTimeline.add(TweenLite.to($('.box'), .5, {x: 50}));
+        // toolTimeline.add(TweenLite.to($('.box'), 1, {x: 500, delay:1}));
+
+        $('#start').on('click', function() {
+            toolTimeline.play();
+        });
+
+        $('#stop').on('click', function() {
+            toolTimeline.stop();
+        });
+
+        $('#pause').on('click', function() {
+            toolTimeline.pause();
+        });
+
+        $('#reverse').on('click', function() {
+            toolTimeline.reverse();
+        });
+
+    }
+
+    function setBackToOriginal(box) {
+        TweenMax.to('.box', 3, {
+            top: '20vh',
+            left: '20vw',
+            rotationX: 0,
+            rotation: 0,
+            alpha: 1,
+            scale: 1
+        });
+    }
+</script>
+</body>
+</html>
